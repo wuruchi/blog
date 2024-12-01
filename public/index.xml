@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Wilmer Uruchi Blog</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Wilmer Uruchi Blog</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 01 Dec 2024 14:53:58 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My First Post</title>
+      <link>http://localhost:1313/posts/my-first-post/</link>
+      <pubDate>Sun, 01 Dec 2024 14:53:58 +0100</pubDate>
+      <guid>http://localhost:1313/posts/my-first-post/</guid>
+      <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;&#xA;&lt;p&gt;Clean Start. Focusing on &lt;strong&gt;content&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Wilmer&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
