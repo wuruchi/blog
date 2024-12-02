@@ -1,4 +1,4 @@
-baseURL = 'https://wuruchi.github.io/hugo-blog'
+baseURL = 'https://wuruchi.github.io/blog'
 languageCode = 'en-us'
 title = 'Wilmer Uruchi Blog'
 theme = 'ananke'
