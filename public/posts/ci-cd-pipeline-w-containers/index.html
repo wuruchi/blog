@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en-us">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
     <title>A GitLab pipeline with containers to achieve faster pipelines | Wilmer Uruchi Blog</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="Motivation
-Continuos Integration and Continuos Deployment have become a necessary requirement in most of our projects. Certainly, we can get rid of many manual processes by building a pipeline in GitLab that runs through the usual steps: test, build, deploy. However, these steps can involve redundant actions, for example, the test steps needs to install the necessary dependencies of the project to run, while the build process might also need to install the same dependencies. In the case of node_modules, these can be easily shared between environments, but might not be as easy for python packages or other dependencies that are not as easily shared between pipeline steps.">
+Continuos Integration and Continuos Deployment have become a necessary requirement in most of our projects. We can get rid of many manual processes by building a pipeline in GitLab, or similar tool, which runs through the usual steps: test, build, deploy. However, these steps can involve redundant actions, for example, the test steps needs to install the necessary dependencies of the project to run, while the build process might also need to install the same dependencies. In the case of node_modules, these can be easily shared between environments, but might not be as easy for python packages or other dependencies that are not as easily shared between pipeline steps or that require a large list of dependencies to be installed first in the execution environment.">
     <meta name="generator" content="Hugo 0.139.3">
     
     
@@ -17,7 +17,7 @@ Continuos Integration and Continuos Deployment have become a necessary requireme
     
 
     
-<link rel="stylesheet" href="/ananke/css/main.min.css" >
+<link rel="stylesheet" href="/blog/ananke/css/main.min.css" >
 
 
 
@@ -31,13 +31,13 @@ Continuos Integration and Continuos Deployment have become a necessary requireme
     
 
     
-      <link rel="canonical" href="http://localhost:1313/posts/ci-cd-pipeline-w-containers/">
+      <link rel="canonical" href="http://localhost:1313/blog/posts/ci-cd-pipeline-w-containers/">
     
 
-    <meta property="og:url" content="http://localhost:1313/posts/ci-cd-pipeline-w-containers/">
+    <meta property="og:url" content="http://localhost:1313/blog/posts/ci-cd-pipeline-w-containers/">
   <meta property="og:site_name" content="Wilmer Uruchi Blog">
   <meta property="og:title" content="A GitLab pipeline with containers to achieve faster pipelines">
-  <meta property="og:description" content="Motivation Continuos Integration and Continuos Deployment have become a necessary requirement in most of our projects. Certainly, we can get rid of many manual processes by building a pipeline in GitLab that runs through the usual steps: test, build, deploy. However, these steps can involve redundant actions, for example, the test steps needs to install the necessary dependencies of the project to run, while the build process might also need to install the same dependencies. In the case of node_modules, these can be easily shared between environments, but might not be as easy for python packages or other dependencies that are not as easily shared between pipeline steps.">
+  <meta property="og:description" content="Motivation Continuos Integration and Continuos Deployment have become a necessary requirement in most of our projects. We can get rid of many manual processes by building a pipeline in GitLab, or similar tool, which runs through the usual steps: test, build, deploy. However, these steps can involve redundant actions, for example, the test steps needs to install the necessary dependencies of the project to run, while the build process might also need to install the same dependencies. In the case of node_modules, these can be easily shared between environments, but might not be as easy for python packages or other dependencies that are not as easily shared between pipeline steps or that require a large list of dependencies to be installed first in the execution environment.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
@@ -45,13 +45,13 @@ Continuos Integration and Continuos Deployment have become a necessary requireme
     <meta property="article:modified_time" content="2024-12-01T15:23:08+01:00">
 
   <meta itemprop="name" content="A GitLab pipeline with containers to achieve faster pipelines">
-  <meta itemprop="description" content="Motivation Continuos Integration and Continuos Deployment have become a necessary requirement in most of our projects. Certainly, we can get rid of many manual processes by building a pipeline in GitLab that runs through the usual steps: test, build, deploy. However, these steps can involve redundant actions, for example, the test steps needs to install the necessary dependencies of the project to run, while the build process might also need to install the same dependencies. In the case of node_modules, these can be easily shared between environments, but might not be as easy for python packages or other dependencies that are not as easily shared between pipeline steps.">
+  <meta itemprop="description" content="Motivation Continuos Integration and Continuos Deployment have become a necessary requirement in most of our projects. We can get rid of many manual processes by building a pipeline in GitLab, or similar tool, which runs through the usual steps: test, build, deploy. However, these steps can involve redundant actions, for example, the test steps needs to install the necessary dependencies of the project to run, while the build process might also need to install the same dependencies. In the case of node_modules, these can be easily shared between environments, but might not be as easy for python packages or other dependencies that are not as easily shared between pipeline steps or that require a large list of dependencies to be installed first in the execution environment.">
   <meta itemprop="datePublished" content="2024-12-01T15:23:08+01:00">
   <meta itemprop="dateModified" content="2024-12-01T15:23:08+01:00">
-  <meta itemprop="wordCount" content="754">
+  <meta itemprop="wordCount" content="840">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="A GitLab pipeline with containers to achieve faster pipelines">
-  <meta name="twitter:description" content="Motivation Continuos Integration and Continuos Deployment have become a necessary requirement in most of our projects. Certainly, we can get rid of many manual processes by building a pipeline in GitLab that runs through the usual steps: test, build, deploy. However, these steps can involve redundant actions, for example, the test steps needs to install the necessary dependencies of the project to run, while the build process might also need to install the same dependencies. In the case of node_modules, these can be easily shared between environments, but might not be as easy for python packages or other dependencies that are not as easily shared between pipeline steps.">
+  <meta name="twitter:description" content="Motivation Continuos Integration and Continuos Deployment have become a necessary requirement in most of our projects. We can get rid of many manual processes by building a pipeline in GitLab, or similar tool, which runs through the usual steps: test, build, deploy. However, these steps can involve redundant actions, for example, the test steps needs to install the necessary dependencies of the project to run, while the build process might also need to install the same dependencies. In the case of node_modules, these can be easily shared between environments, but might not be as easy for python packages or other dependencies that are not as easily shared between pipeline steps or that require a large list of dependencies to be installed first in the execution environment.">
 
 	
   </head><body class="ma0 avenir bg-near-white development">
@@ -64,7 +64,7 @@ Continuos Integration and Continuos Deployment have become a necessary requireme
     <div class="bg-black">
       <nav class="pv3 ph3 ph4-ns" role="navigation">
   <div class="flex-l justify-between items-center center">
-    <a href="/" class="f3 fw2 hover-white no-underline white-90 dib">
+    <a href="/blog/" class="f3 fw2 hover-white no-underline white-90 dib">
       
         Wilmer Uruchi Blog
       
@@ -104,25 +104,28 @@ Continuos Integration and Continuos Deployment have become a necessary requireme
       
     </header>
     <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="motivation">Motivation</h2>
-<p>Continuos Integration and Continuos Deployment have become a necessary requirement in most of our projects. Certainly, we can get rid of many manual processes by building a pipeline in <strong>GitLab</strong> that runs through the usual steps: <strong>test</strong>, <strong>build</strong>, <strong>deploy</strong>. However, these steps can involve redundant actions, for example, the <strong>test</strong> steps needs to install the necessary dependencies of the project to run, while the <strong>build</strong> process might also need to install the same dependencies. In the case of <code>node_modules</code>, these can be easily shared between environments, but might not be as easy for <code>python</code> packages or other dependencies that are not as easily shared between pipeline steps.</p>
+<p>Continuos Integration and Continuos Deployment have become a necessary requirement in most of our projects. We can get rid of many manual processes by building a pipeline in <strong>GitLab</strong>, or similar tool, which runs through the usual steps: <strong>test</strong>, <strong>build</strong>, <strong>deploy</strong>. However, these steps can involve redundant actions, for example, the <strong>test</strong> steps needs to install the necessary dependencies of the project to run, while the <strong>build</strong> process might also need to install the same dependencies. In the case of <code>node_modules</code>, these can be easily shared between environments, but might not be as easy for <code>python</code> packages or other dependencies that are not as easily shared between pipeline steps or that require a large list of dependencies to be installed first in the execution environment.</p>
+<p>In this experiment, blog entry, we show a way to share execution environments between pipeline jobs in the form of container images that can be used by the pipeline. We try to show that by doing this, we can save some time at the expense of space.</p>
 <h2 id="problem">Problem</h2>
-<p>In the problem I am presenting in this blog entry, we have a <code>python</code> project where we are managing the <strong>code dependencies</strong> using <code>poetry</code>. Then, we can build an <strong>artifact</strong> that <strong>manifests</strong> our project in the execution environment using <strong>poetry</strong>. Then, we can deploy our code into the AWS infrastructure of choice using <code>Terraform</code>. Then, the basic steps of the pipeline will be as follows:</p>
+<p>In the problem I am presenting in this blog entry, we have a <code>python</code> project where we are managing <strong>code dependencies</strong> using <code>poetry</code>. Then, we build an <strong>artifact</strong> that <strong>manifests</strong> our project in the execution environment. Then, we deploy our code into the AWS infrastructure of choice using <code>Terraform</code>.</p>
+<h2 id="solution">Solution</h2>
+<p>The basic stages of the pipeline will be:</p>
 <ul>
+<li>build images</li>
 <li>unit test</li>
 <li>build package</li>
-<li>deploy merge request</li>
+<li>merge request</li>
 <li>cleanup</li>
-<li>deploy production</li>
+<li>deploy</li>
 </ul>
-<p>The <strong>unit test</strong> step needs a <code>python3.12</code> image where all the code dependencies are installed. If an integration test needs access to some remote resources, then we also need the necessary credentials in the execution environment.</p>
-<p>The <strong>build package</strong> step needs the <code>python3.12</code> image with all code dependencies installed. It does not need any credentials. This step will product an <strong>artifact.zip</strong> that will be consumed by the <strong>deploy</strong> steps.</p>
-<p>The <strong>deploy merge request</strong> step needs an image with <code>terraform</code> installed. We choose a <code>node:20</code> image as base. It will also need the necessary credentials to connect to <strong>AWS</strong>.</p>
-<p>The <strong>cleanup</strong> step needs an image with <code>terraform</code> installed. It also needs <strong>AWS</strong> credentials.</p>
-<p>The <strong>deploy production</strong> step needs <code>terraform</code> and <strong>AWS</strong> credentials.</p>
-<h2 id="solution">Solution</h2>
-<p>We need to build the images that the different steps of the pipeline will need. The job of building these images is also going to become a step in the pipeline. Building images also implies that we need some repository where we are going to store them, and accessing some remote repository implies credentials.</p>
-<p>Since we are already using <strong>AWS</strong> to deploy our project infrastructure, we can uson <strong>AWS ECR</strong> to store our images and tag them accordingly. Consequently, the <strong>AWS</strong> credentials that we are going to use in our pipeline also need the necessary permissions to push and retrieve images from <strong>ECR</strong>. To say it more adequately, the <strong>IAM Role</strong> that our credentials represent should&rsquo;ve been granted the necessary policies to operate on <strong>ECR</strong>.</p>
-<p>Then, it is required that our pipeline starts with a step that retrieves the credentials that some our steps will need.</p>
+<p>The <strong>build images</strong> stage runs on a <code>docker</code> image. It requires AWS credentials to upload to <code>AWS ECR</code> the images it generates. This stage will implement two jobs, one job generates the <strong>app container</strong> and the other generates the <strong>terraform container</strong>.</p>
+<p>The <strong>unit test</strong> stage needs a <code>python3.12</code> image with all the code dependencies installed. We need AWS credentials in the execution environment to pull the <strong>test container</strong> generated in the <strong>build images</strong> stage from <code>AWS ECR</code>.</p>
+<p>The <strong>build package</strong> stage needs the <code>python3.12</code> image with all code dependencies installed. We need the necessary AWS credentials in the execution environment to pull the <strong>test container</strong> generated in the <strong>build images</strong> stage from <code>AWS ECR</code>.</p>
+<p>The <strong>merge request</strong> stage needs an image with <code>terraform</code> installed. We choose a <code>node:20</code> image as base. We need the necessary credentials in the execution environment to pull the <strong>terraform container</strong> generated in the <strong>build images</strong> stage from <code>AWS ECR</code>.</p>
+<p>The <strong>cleanup</strong> stage needs an image with <code>terraform</code> installed. It also needs <strong>AWS</strong> credentials to retrieve an image from <code>AWS ECR</code>.</p>
+<p>The <strong>deploy production</strong> stage needs and execution environment with <code>terraform</code> installed. It also needs <strong>AWS</strong> credentials to retrieve an image from <code>AWS ECR</code>.</p>
+<p>We need to build the images that the different steps of the pipeline need. The job of building these images is also going to become a step in the pipeline. Building images also implies that we need some repository where we are going to store them, and accessing some remote repository implies credentials.</p>
+<p>Since we are already using <strong>AWS</strong> to deploy our project infrastructure, we can use <strong>AWS ECR</strong> to store our tagged images. Consequently, the <strong>AWS</strong> credentials that we are going to use in our pipeline also need the necessary permissions to push and retrieve images from <strong>ECR</strong>. Properly speaking, the <strong>IAM Role</strong> that our credentials represent should&rsquo;ve been granted the necessary policies to operate on <strong>ECR</strong> on the target <strong>AWS Account</strong>.</p>
 <p>First, let&rsquo;s define the variables that our pipeline will need:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">AWS_ACCOUNT_ID</span>: <span style="color:#e6db74">&#34;&lt;Your_Account_Id&gt;&#34;</span>
@@ -136,7 +139,7 @@ Continuos Integration and Continuos Deployment have become a necessary requireme
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">ROLE_ARN</span>: <span style="color:#e6db74">&#34;arn:aws:iam::${AWS_ACCOUNT_ID}:role/terraform-deployment-role&#34;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">FEATURE_BRANCH_TAG</span>: <span style="color:#e6db74">&#34;MR-${CI_MERGE_REQUEST_IID}&#34;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">RELEASE_TAG</span>: <span style="color:#e6db74">&#34;latest&#34;</span>
-</span></span></code></pre></div><p>Most of these variables are self-explanatory but we can highlight that we are defining a repository name <code>APP_IMAGE_REPO_NAME</code> for our application steps <strong>test</strong>, <strong>build</strong>; and another repository name <code>TF_IMAGE_REPO_NAME</code> for <code>Terraform</code> related steps <strong>deploy</strong>, <strong>cleanup</strong>.</p>
+</span></span></code></pre></div><p>Most of these variables are self-explanatory but we can highlight that we are defining a repository name <code>APP_IMAGE_REPO_NAME</code> for our application steps <strong>test</strong> and <strong>build</strong>; and another repository name <code>TF_IMAGE_REPO_NAME</code> for <code>Terraform</code> related steps ** <strong>deploy</strong> and <strong>cleanup</strong>.</p>
 <p>Also, we are defining a <code>ROLE_ARN</code> the represents a role that we have already defined in our <strong>AWS</strong> account that has all the necessary permissions to perform the actions required by our pipelin.</p>
 <p>Then, we can define a <code>YAML anchor</code> as follows:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">.get_aws_credentials</span>: <span style="color:#75715e">&amp;get_aws_credentials</span>
@@ -146,25 +149,15 @@ Continuos Integration and Continuos Deployment have become a necessary requireme
 </span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">export AWS_ACCESS_KEY_ID=$(echo $TEMP_ROLE | jq -r &#39;.Credentials.AccessKeyId&#39;)</span>
 </span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">export AWS_SECRET_ACCESS_KEY=$(echo $TEMP_ROLE | jq -r &#39;.Credentials.SecretAccessKey&#39;)</span>
 </span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">export AWS_SESSION_TOKEN=$(echo $TEMP_ROLE | jq -r &#39;.Credentials.SessionToken&#39;)</span>
-</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">echo &#34;AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID&#34; &gt;&gt; .env</span>
-</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">echo &#34;AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY&#34; &gt;&gt; .env</span>
-</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">echo &#34;AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN&#34; &gt;&gt; .env</span>
-</span></span></code></pre></div><p>We assume that our pipeline is running under credentials that have the permission to assume <code>$ROLE_ARN</code>. Then, <code>TEMP_ROLE</code> includes temporary security credentials. After some transformation, we have the environment variables <code>AWS_ACCESS_KEY_ID</code>, <code>AWS_SECRET_ACCESS_KEY</code>, and <code>AWS_SESSION_TOKEN</code> that we can use to authenticate and authorize <strong>AWS CLI</strong> commands to access <strong>AWS</strong> resources with the permissions granted to the assumed role.</p>
-<p>Then, we define the pipeline step:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">get-aws-credentials</span>:
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">stage</span>: <span style="color:#ae81ff">get aws credentials</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">rules</span>:
-</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">if</span>: <span style="color:#ae81ff">$CI_MERGE_REQUEST_IID</span>
-</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">if</span>: <span style="color:#ae81ff">$CI_COMMIT_BRANCH == &#39;main&#39;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">before_script</span>:
-</span></span><span style="display:flex;"><span>    - <span style="color:#75715e">*get_aws_credentials</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">script</span>:
-</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">echo &#34;AWS credentials obtained&#34;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#f92672">artifacts</span>:
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">when</span>: <span style="color:#ae81ff">always</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">expire_in</span>: <span style="color:#ae81ff">7</span> <span style="color:#ae81ff">days</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#f92672">reports</span>:
-</span></span><span style="display:flex;"><span>      <span style="color:#f92672">dotenv</span>: <span style="color:#ae81ff">.env</span>
+</span></span></code></pre></div><p>We assume that our pipeline is running under credentials that have the permission to assume <code>$ROLE_ARN</code>. Then, <code>TEMP_ROLE</code> contains temporary security credentials. After some transformation, we have the environment variables <code>AWS_ACCESS_KEY_ID</code>, <code>AWS_SECRET_ACCESS_KEY</code>, and <code>AWS_SESSION_TOKEN</code> that we can use to authenticate and authorize <strong>AWS CLI</strong> commands to access <strong>AWS</strong> resources with the permissions granted to the assumed role.</p>
+<p>As a reminder, these are our pipeline steps:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">stages</span>:
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">build images</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">unit test</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">build package</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">merge request</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">cleanup</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">deploy</span>
 </span></span></code></pre></div><p>We need that this step runs when we commit to a <strong>merge request</strong> and also when merginng into the <strong>main</strong> branch. We store the credentials retrieved by the anchor using the <code>dotenv</code> functionality.</p>
 <ul class="pa0">
   
@@ -187,7 +180,7 @@ Continuos Integration and Continuos Deployment have become a necessary requireme
     </main>
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/" >
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/blog/" >
     &copy;  Wilmer Uruchi Blog 2024 
   </a>
     <div><div class="ananke-socials"></div>
