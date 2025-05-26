@@ -6,21 +6,21 @@
     <description>Recent content on Wilmer Uruchi Blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Dec 2024 15:23:08 +0100</lastBuildDate>
+    <lastBuildDate>Sun, 01 Dec 2024 14:53:58 +0100</lastBuildDate>
     <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>A GitLab pipeline with containers to achieve faster pipelines</title>
-      <link>http://localhost:1313/blog/posts/ci-cd-pipeline-w-containers/</link>
-      <pubDate>Sun, 01 Dec 2024 15:23:08 +0100</pubDate>
-      <guid>http://localhost:1313/blog/posts/ci-cd-pipeline-w-containers/</guid>
-      <description>&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;&#xA;&lt;p&gt;Continuos Integration and Continuos Deployment have become a necessary requirement in most of our projects. We can get rid of many manual processes by building a pipeline in &lt;strong&gt;GitLab&lt;/strong&gt;, or similar tool, which runs through the usual steps: &lt;strong&gt;test&lt;/strong&gt;, &lt;strong&gt;build&lt;/strong&gt;, &lt;strong&gt;deploy&lt;/strong&gt;. However, these steps can involve redundant actions, for example, the &lt;strong&gt;test&lt;/strong&gt; steps needs to install the necessary dependencies of the project to run, while the &lt;strong&gt;build&lt;/strong&gt; process might also need to install the same dependencies. In the case of &lt;code&gt;node_modules&lt;/code&gt;, these can be easily shared between environments, but might not be as easy for &lt;code&gt;python&lt;/code&gt; packages or other dependencies that are not as easily shared between pipeline steps or that require a large list of dependencies to be installed first in the execution environment.&lt;/p&gt;</description>
-    </item>
     <item>
       <title>My First Post</title>
       <link>http://localhost:1313/blog/posts/my-first-post/</link>
       <pubDate>Sun, 01 Dec 2024 14:53:58 +0100</pubDate>
       <guid>http://localhost:1313/blog/posts/my-first-post/</guid>
       <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;&#xA;&lt;p&gt;Clean Start. Focusing on &lt;strong&gt;content&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Wilmer&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>A GitLab pipeline that re-uses containers to achieve faster run times</title>
+      <link>http://localhost:1313/blog/posts/ci-cd-pipeline-w-containers/</link>
+      <pubDate>Mon, 20 May 2024 15:23:08 +0100</pubDate>
+      <guid>http://localhost:1313/blog/posts/ci-cd-pipeline-w-containers/</guid>
+      <description>&lt;h1 id=&#34;motivation&#34;&gt;Motivation&lt;/h1&gt;&#xA;&lt;p&gt;Continuos Integration and Continuos Deployment has become a necessary requirement in most (if not all) of our projects. We can get rid of many manual processes by building a pipeline in &lt;strong&gt;GitLab&lt;/strong&gt;, or similar tool, which runs through the usual steps: &lt;strong&gt;test&lt;/strong&gt;, &lt;strong&gt;build&lt;/strong&gt;, &lt;strong&gt;deploy&lt;/strong&gt;. However, these steps can involve redundant &lt;em&gt;automated&lt;/em&gt; actions, for example, the &lt;strong&gt;test&lt;/strong&gt; steps needs to install the necessary dependencies of the project to run, while the &lt;strong&gt;build&lt;/strong&gt; process might also need to install the same dependencies. In the case of &lt;code&gt;node_modules&lt;/code&gt;, these can be trivially shared between environments, but it might not be as simple for &lt;code&gt;python&lt;/code&gt; packages or other dependencies that are not as easily shared between pipeline steps or that require a large list of dependencies to be already present in the execution environment.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

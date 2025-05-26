@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     
-    <title>A GitLab pipeline with containers to achieve faster pipelines | Wilmer Uruchi Blog</title>
+    <title>A GitLab pipeline that re-uses containers to achieve faster run times | Wilmer Uruchi Blog</title>
     <meta name="viewport" content="width=device-width,minimum-scale=1">
     <meta name="description" content="Motivation
-Continuos Integration and Continuos Deployment have become a necessary requirement in most of our projects. We can get rid of many manual processes by building a pipeline in GitLab, or similar tool, which runs through the usual steps: test, build, deploy. However, these steps can involve redundant actions, for example, the test steps needs to install the necessary dependencies of the project to run, while the build process might also need to install the same dependencies. In the case of node_modules, these can be easily shared between environments, but might not be as easy for python packages or other dependencies that are not as easily shared between pipeline steps or that require a large list of dependencies to be installed first in the execution environment.">
-    <meta name="generator" content="Hugo 0.139.3">
+Continuos Integration and Continuos Deployment has become a necessary requirement in most (if not all) of our projects. We can get rid of many manual processes by building a pipeline in GitLab, or similar tool, which runs through the usual steps: test, build, deploy. However, these steps can involve redundant automated actions, for example, the test steps needs to install the necessary dependencies of the project to run, while the build process might also need to install the same dependencies. In the case of node_modules, these can be trivially shared between environments, but it might not be as simple for python packages or other dependencies that are not as easily shared between pipeline steps or that require a large list of dependencies to be already present in the execution environment.">
+    <meta name="generator" content="Hugo 0.144.2">
     
     
     
@@ -36,22 +36,22 @@ Continuos Integration and Continuos Deployment have become a necessary requireme
 
     <meta property="og:url" content="http://localhost:1313/blog/posts/ci-cd-pipeline-w-containers/">
   <meta property="og:site_name" content="Wilmer Uruchi Blog">
-  <meta property="og:title" content="A GitLab pipeline with containers to achieve faster pipelines">
-  <meta property="og:description" content="Motivation Continuos Integration and Continuos Deployment have become a necessary requirement in most of our projects. We can get rid of many manual processes by building a pipeline in GitLab, or similar tool, which runs through the usual steps: test, build, deploy. However, these steps can involve redundant actions, for example, the test steps needs to install the necessary dependencies of the project to run, while the build process might also need to install the same dependencies. In the case of node_modules, these can be easily shared between environments, but might not be as easy for python packages or other dependencies that are not as easily shared between pipeline steps or that require a large list of dependencies to be installed first in the execution environment.">
+  <meta property="og:title" content="A GitLab pipeline that re-uses containers to achieve faster run times">
+  <meta property="og:description" content="Motivation Continuos Integration and Continuos Deployment has become a necessary requirement in most (if not all) of our projects. We can get rid of many manual processes by building a pipeline in GitLab, or similar tool, which runs through the usual steps: test, build, deploy. However, these steps can involve redundant automated actions, for example, the test steps needs to install the necessary dependencies of the project to run, while the build process might also need to install the same dependencies. In the case of node_modules, these can be trivially shared between environments, but it might not be as simple for python packages or other dependencies that are not as easily shared between pipeline steps or that require a large list of dependencies to be already present in the execution environment.">
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-12-01T15:23:08+01:00">
-    <meta property="article:modified_time" content="2024-12-01T15:23:08+01:00">
+    <meta property="article:published_time" content="2024-05-20T15:23:08+01:00">
+    <meta property="article:modified_time" content="2024-05-20T15:23:08+01:00">
 
-  <meta itemprop="name" content="A GitLab pipeline with containers to achieve faster pipelines">
-  <meta itemprop="description" content="Motivation Continuos Integration and Continuos Deployment have become a necessary requirement in most of our projects. We can get rid of many manual processes by building a pipeline in GitLab, or similar tool, which runs through the usual steps: test, build, deploy. However, these steps can involve redundant actions, for example, the test steps needs to install the necessary dependencies of the project to run, while the build process might also need to install the same dependencies. In the case of node_modules, these can be easily shared between environments, but might not be as easy for python packages or other dependencies that are not as easily shared between pipeline steps or that require a large list of dependencies to be installed first in the execution environment.">
-  <meta itemprop="datePublished" content="2024-12-01T15:23:08+01:00">
-  <meta itemprop="dateModified" content="2024-12-01T15:23:08+01:00">
-  <meta itemprop="wordCount" content="840">
+  <meta itemprop="name" content="A GitLab pipeline that re-uses containers to achieve faster run times">
+  <meta itemprop="description" content="Motivation Continuos Integration and Continuos Deployment has become a necessary requirement in most (if not all) of our projects. We can get rid of many manual processes by building a pipeline in GitLab, or similar tool, which runs through the usual steps: test, build, deploy. However, these steps can involve redundant automated actions, for example, the test steps needs to install the necessary dependencies of the project to run, while the build process might also need to install the same dependencies. In the case of node_modules, these can be trivially shared between environments, but it might not be as simple for python packages or other dependencies that are not as easily shared between pipeline steps or that require a large list of dependencies to be already present in the execution environment.">
+  <meta itemprop="datePublished" content="2024-05-20T15:23:08+01:00">
+  <meta itemprop="dateModified" content="2024-05-20T15:23:08+01:00">
+  <meta itemprop="wordCount" content="2762">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="A GitLab pipeline with containers to achieve faster pipelines">
-  <meta name="twitter:description" content="Motivation Continuos Integration and Continuos Deployment have become a necessary requirement in most of our projects. We can get rid of many manual processes by building a pipeline in GitLab, or similar tool, which runs through the usual steps: test, build, deploy. However, these steps can involve redundant actions, for example, the test steps needs to install the necessary dependencies of the project to run, while the build process might also need to install the same dependencies. In the case of node_modules, these can be easily shared between environments, but might not be as easy for python packages or other dependencies that are not as easily shared between pipeline steps or that require a large list of dependencies to be installed first in the execution environment.">
+  <meta name="twitter:title" content="A GitLab pipeline that re-uses containers to achieve faster run times">
+  <meta name="twitter:description" content="Motivation Continuos Integration and Continuos Deployment has become a necessary requirement in most (if not all) of our projects. We can get rid of many manual processes by building a pipeline in GitLab, or similar tool, which runs through the usual steps: test, build, deploy. However, these steps can involve redundant automated actions, for example, the test steps needs to install the necessary dependencies of the project to run, while the build process might also need to install the same dependencies. In the case of node_modules, these can be trivially shared between environments, but it might not be as simple for python packages or other dependencies that are not as easily shared between pipeline steps or that require a large list of dependencies to be already present in the execution environment.">
 
 	
   </head><body class="ma0 avenir bg-near-white development">
@@ -93,23 +93,24 @@ Continuos Integration and Continuos Deployment have become a necessary requireme
           
         Posts
       </aside><div id="sharing" class="mt3 ananke-socials"></div>
-<h1 class="f1 athelas mt3 mb1">A GitLab pipeline with containers to achieve faster pipelines</h1>
+<h1 class="f1 athelas mt3 mb1">A GitLab pipeline that re-uses containers to achieve faster run times</h1>
       
       
       
-      <time class="f6 mv4 dib tracked" datetime="2024-12-01T15:23:08+01:00">December 1, 2024</time>
+      <time class="f6 mv4 dib tracked" datetime="2024-05-20T15:23:08+01:00">May 20, 2024</time>
       
 
       
       
     </header>
-    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h2 id="motivation">Motivation</h2>
-<p>Continuos Integration and Continuos Deployment have become a necessary requirement in most of our projects. We can get rid of many manual processes by building a pipeline in <strong>GitLab</strong>, or similar tool, which runs through the usual steps: <strong>test</strong>, <strong>build</strong>, <strong>deploy</strong>. However, these steps can involve redundant actions, for example, the <strong>test</strong> steps needs to install the necessary dependencies of the project to run, while the <strong>build</strong> process might also need to install the same dependencies. In the case of <code>node_modules</code>, these can be easily shared between environments, but might not be as easy for <code>python</code> packages or other dependencies that are not as easily shared between pipeline steps or that require a large list of dependencies to be installed first in the execution environment.</p>
-<p>In this experiment, blog entry, we show a way to share execution environments between pipeline jobs in the form of container images that can be used by the pipeline. We try to show that by doing this, we can save some time at the expense of space.</p>
-<h2 id="problem">Problem</h2>
-<p>In the problem I am presenting in this blog entry, we have a <code>python</code> project where we are managing <strong>code dependencies</strong> using <code>poetry</code>. Then, we build an <strong>artifact</strong> that <strong>manifests</strong> our project in the execution environment. Then, we deploy our code into the AWS infrastructure of choice using <code>Terraform</code>.</p>
-<h2 id="solution">Solution</h2>
-<p>The basic stages of the pipeline will be:</p>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><h1 id="motivation">Motivation</h1>
+<p>Continuos Integration and Continuos Deployment has become a necessary requirement in most (if not all) of our projects. We can get rid of many manual processes by building a pipeline in <strong>GitLab</strong>, or similar tool, which runs through the usual steps: <strong>test</strong>, <strong>build</strong>, <strong>deploy</strong>. However, these steps can involve redundant <em>automated</em> actions, for example, the <strong>test</strong> steps needs to install the necessary dependencies of the project to run, while the <strong>build</strong> process might also need to install the same dependencies. In the case of <code>node_modules</code>, these can be trivially shared between environments, but it might not be as simple for <code>python</code> packages or other dependencies that are not as easily shared between pipeline steps or that require a large list of dependencies to be already present in the execution environment.</p>
+<p>These <em>redundant automated</em> actions take computation time and resources that are usually shared between teams or groups of developers in general. Also, I assume that few people enjoy waiting for a long repetitive pipeline to complete when deep down you know that, most likely, there is something that can be done about it.</p>
+<p>In this blog entry, I show a way to share execution environments between pipeline jobs in the form of container images. These container images are built in the early stages of the pipeline and then consumed as required. I try to show that by doing this, we can save some time at the expense of space.</p>
+<h1 id="problem">Problem</h1>
+<p>In the problem I am presenting in this blog entry we have a <code>python</code> project where we are managing <strong>code dependencies</strong> using <code>poetry</code>. Then, we build our code into an <strong>artifact</strong> that will <strong>manifest</strong> our project in the execution environment. We deploy our code into the AWS infrastructure of choice using <code>Terraform</code>.</p>
+<h1 id="solution">Solution</h1>
+<p>The stages of the pipeline:</p>
 <ul>
 <li>build images</li>
 <li>unit test</li>
@@ -118,15 +119,15 @@ Continuos Integration and Continuos Deployment have become a necessary requireme
 <li>cleanup</li>
 <li>deploy</li>
 </ul>
-<p>The <strong>build images</strong> stage runs on a <code>docker</code> image. It requires AWS credentials to upload to <code>AWS ECR</code> the images it generates. This stage will implement two jobs, one job generates the <strong>app container</strong> and the other generates the <strong>terraform container</strong>.</p>
-<p>The <strong>unit test</strong> stage needs a <code>python3.12</code> image with all the code dependencies installed. We need AWS credentials in the execution environment to pull the <strong>test container</strong> generated in the <strong>build images</strong> stage from <code>AWS ECR</code>.</p>
-<p>The <strong>build package</strong> stage needs the <code>python3.12</code> image with all code dependencies installed. We need the necessary AWS credentials in the execution environment to pull the <strong>test container</strong> generated in the <strong>build images</strong> stage from <code>AWS ECR</code>.</p>
-<p>The <strong>merge request</strong> stage needs an image with <code>terraform</code> installed. We choose a <code>node:20</code> image as base. We need the necessary credentials in the execution environment to pull the <strong>terraform container</strong> generated in the <strong>build images</strong> stage from <code>AWS ECR</code>.</p>
+<p>We need to build the images for the different steps of the pipeline. The job of building these images is also going to become a step in the pipeline. Building images also implies that we need some repository where we are going to store them, and accessing some remote repository implies credentials.</p>
+<p>Since we are already using <strong>AWS</strong> to deploy our project infrastructure, we can use <strong>AWS ECR</strong> to store our tagged images. Consequently, the <strong>AWS</strong> credentials that we are going to use in our pipeline also need the necessary permissions to push and retrieve images from <strong>ECR</strong>. To be a little more specific, the <strong>IAM Role</strong> that our credentials represent should&rsquo;ve been granted the necessary policies to operate on <strong>ECR</strong> on the target <strong>AWS Account</strong>.</p>
+<p>The <strong>build images</strong> stage runs on a <code>docker</code> image. It requires AWS credentials to upload to <code>AWS ECR</code> the images it generates. This stage will implement two jobs, one job generates the <strong>app container</strong> and the other generates the <strong>terraform container</strong>. The <strong>app container</strong> is in charge of all operation that require the python dependencies. The <strong>terraform container</strong> deals only with <code>Terraform</code> operations.</p>
+<p>The <strong>unit test</strong> stage needs a <code>python3.12</code> image with all the code dependencies already installed. We need AWS credentials in the execution environment to pull the <strong>app container</strong> generated in the <strong>build images</strong> stage from <code>AWS ECR</code>.</p>
+<p>The <strong>build package</strong> stage needs the <code>python3.12</code> image with all code dependencies installed. We need the necessary AWS credentials in the execution environment to pull the <strong>app container</strong> generated in the <strong>build images</strong> stage from <code>AWS ECR</code>.</p>
+<p>The <strong>merge request</strong> stage needs an image with <code>terraform</code> installed. We need the necessary credentials in the execution environment to pull the <strong>terraform container</strong> generated in the <strong>build images</strong> stage from <code>AWS ECR</code>.</p>
 <p>The <strong>cleanup</strong> stage needs an image with <code>terraform</code> installed. It also needs <strong>AWS</strong> credentials to retrieve an image from <code>AWS ECR</code>.</p>
 <p>The <strong>deploy production</strong> stage needs and execution environment with <code>terraform</code> installed. It also needs <strong>AWS</strong> credentials to retrieve an image from <code>AWS ECR</code>.</p>
-<p>We need to build the images that the different steps of the pipeline need. The job of building these images is also going to become a step in the pipeline. Building images also implies that we need some repository where we are going to store them, and accessing some remote repository implies credentials.</p>
-<p>Since we are already using <strong>AWS</strong> to deploy our project infrastructure, we can use <strong>AWS ECR</strong> to store our tagged images. Consequently, the <strong>AWS</strong> credentials that we are going to use in our pipeline also need the necessary permissions to push and retrieve images from <strong>ECR</strong>. Properly speaking, the <strong>IAM Role</strong> that our credentials represent should&rsquo;ve been granted the necessary policies to operate on <strong>ECR</strong> on the target <strong>AWS Account</strong>.</p>
-<p>First, let&rsquo;s define the variables that our pipeline will need:</p>
+<p>Let&rsquo;s define the variables that our pipeline needs:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">variables</span>:
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">AWS_ACCOUNT_ID</span>: <span style="color:#e6db74">&#34;&lt;Your_Account_Id&gt;&#34;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">AWS_ECR_REGISTRY</span>: <span style="color:#e6db74">&#34;${AWS_ACCOUNT_ID}.dkr.ecr.eu-west-1.amazonaws.com&#34;</span>
@@ -139,9 +140,11 @@ Continuos Integration and Continuos Deployment have become a necessary requireme
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">ROLE_ARN</span>: <span style="color:#e6db74">&#34;arn:aws:iam::${AWS_ACCOUNT_ID}:role/terraform-deployment-role&#34;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">FEATURE_BRANCH_TAG</span>: <span style="color:#e6db74">&#34;MR-${CI_MERGE_REQUEST_IID}&#34;</span>
 </span></span><span style="display:flex;"><span>  <span style="color:#f92672">RELEASE_TAG</span>: <span style="color:#e6db74">&#34;latest&#34;</span>
-</span></span></code></pre></div><p>Most of these variables are self-explanatory but we can highlight that we are defining a repository name <code>APP_IMAGE_REPO_NAME</code> for our application steps <strong>test</strong> and <strong>build</strong>; and another repository name <code>TF_IMAGE_REPO_NAME</code> for <code>Terraform</code> related steps ** <strong>deploy</strong> and <strong>cleanup</strong>.</p>
-<p>Also, we are defining a <code>ROLE_ARN</code> the represents a role that we have already defined in our <strong>AWS</strong> account that has all the necessary permissions to perform the actions required by our pipelin.</p>
-<p>Then, we can define a <code>YAML anchor</code> as follows:</p>
+</span></span></code></pre></div><p>Most of these variables are self-explanatory but we can highlight that we are defining a repository name <code>APP_IMAGE_REPO_NAME</code> that the steps <strong>test</strong> and <strong>build</strong> are going to use to retrieve the image they need; and another repository name <code>TF_IMAGE_REPO_NAME</code> for the steps <strong>deploy</strong> and <strong>cleanup</strong>.</p>
+<p>Also, we are defining a <code>ROLE_ARN</code> that represents a role that we have already defined in our target <strong>AWS</strong> account that has all the necessary permissions to perform the actions required by our pipeline, specifically, our infrastructure-related steps.</p>
+<h2 id="anchors">Anchors</h2>
+<p>Then, we can define <code>YAML anchor</code>s as follows:</p>
+<h3 id="get-credentials-anchor">Get Credentials Anchor</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">.get_aws_credentials</span>: <span style="color:#75715e">&amp;get_aws_credentials</span>
 </span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">apk update &amp;&amp; apk add --no-cache aws-cli jq</span>
 </span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">echo &#34;Assuming role $ROLE_ARN&#34;</span>
@@ -149,7 +152,33 @@ Continuos Integration and Continuos Deployment have become a necessary requireme
 </span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">export AWS_ACCESS_KEY_ID=$(echo $TEMP_ROLE | jq -r &#39;.Credentials.AccessKeyId&#39;)</span>
 </span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">export AWS_SECRET_ACCESS_KEY=$(echo $TEMP_ROLE | jq -r &#39;.Credentials.SecretAccessKey&#39;)</span>
 </span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">export AWS_SESSION_TOKEN=$(echo $TEMP_ROLE | jq -r &#39;.Credentials.SessionToken&#39;)</span>
-</span></span></code></pre></div><p>We assume that our pipeline is running under credentials that have the permission to assume <code>$ROLE_ARN</code>. Then, <code>TEMP_ROLE</code> contains temporary security credentials. After some transformation, we have the environment variables <code>AWS_ACCESS_KEY_ID</code>, <code>AWS_SECRET_ACCESS_KEY</code>, and <code>AWS_SESSION_TOKEN</code> that we can use to authenticate and authorize <strong>AWS CLI</strong> commands to access <strong>AWS</strong> resources with the permissions granted to the assumed role.</p>
+</span></span></code></pre></div><p>Let&rsquo;s assume that our pipeline is running under credentials that have the permission to assume <code>$ROLE_ARN</code>. Then, <code>TEMP_ROLE</code> contains temporary security credentials. After some transformation, we have the environment variables <code>AWS_ACCESS_KEY_ID</code>, <code>AWS_SECRET_ACCESS_KEY</code>, and <code>AWS_SESSION_TOKEN</code> that we can use to authenticate and authorize <strong>AWS CLI</strong> commands to access <strong>AWS</strong> resources with the permissions granted to the assumed role.</p>
+<blockquote>
+<p><strong>Note</strong>: Let&rsquo;s say your GitLab Runners are running under an <code>EC2</code> instance and you need the AWS Credentials associated to this instance to pass it to one of your containers. How do you capture and then pass these <code>EC2</code> credentials to your container? If you have studied your AWS documentation, something should be murmuring the words <em>Instance Metadata</em>, if not, it is a good time to review the documentation. Anyhow, from your GitLab runner you can <code>curl</code> the instance metadata, retrieve it, transform it and re-use it at your leisure. It includes the credentials. <em>The EC2 Assumed Role credentials</em>, to be somewhat more specific.</p></blockquote>
+<h3 id="log-into-ecr-anchor">Log into ECR Anchor</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">.log_into_ecr_with_env_credentials</span>: <span style="color:#75715e">&amp;log_into_ecr_with_env_credentials</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">echo &#34;Logging into ECR&#34;</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com</span>
+</span></span></code></pre></div><p>We assume that the <code>aws-cli</code> has been installed. This anchor needs some credentials already existing in the environment. Those credentials come from the <code>.get_aws_credentials</code> anchor.</p>
+<h3 id="run-app-container-anchor">Run App Container Anchor</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">.run_app_container</span>: <span style="color:#75715e">&amp;run_app_container</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">docker pull $APP_IMAGE_REPO_URL:$IMAGE_TAG</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">docker run -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID</span>
+</span></span><span style="display:flex;"><span>    -<span style="color:#ae81ff">e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY</span>
+</span></span><span style="display:flex;"><span>    -<span style="color:#ae81ff">e AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN</span>
+</span></span><span style="display:flex;"><span>    -<span style="color:#ae81ff">e ENVIRONMENT=$ENVIRONMENT</span>
+</span></span><span style="display:flex;"><span>    --<span style="color:#ae81ff">privileged -d --name app-container $APP_IMAGE_REPO_URL:$IMAGE_TAG sleep infinity</span>
+</span></span></code></pre></div><p>This anchor uses the credentials already set in the environment and passes them to the container it is going to run: <code>app-container</code>.</p>
+<h3 id="run-terraform-container-anchor">Run Terraform Container Anchor</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">.run_terraform_container</span>: <span style="color:#75715e">&amp;run_terraform_container</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">docker pull $TF_IMAGE_REPO_URL:$IMAGE_TAG</span>
+</span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">docker run -e AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID</span>
+</span></span><span style="display:flex;"><span>    -<span style="color:#ae81ff">e AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY</span>
+</span></span><span style="display:flex;"><span>    -<span style="color:#ae81ff">e AWS_SESSION_TOKEN=$AWS_SESSION_TOKEN</span>
+</span></span><span style="display:flex;"><span>    -<span style="color:#ae81ff">e ENVIRONMENT=$ENVIRONMENT</span>
+</span></span><span style="display:flex;"><span>    --<span style="color:#ae81ff">privileged -d --name terraform-container $TF_IMAGE_REPO_URL:$IMAGE_TAG sleep infinity</span>
+</span></span></code></pre></div><p>This anchor uses the credentials already set in the environment and passes them to the container it is going to run: <code>terraform-container</code>.</p>
+<h2 id="tasks">Tasks</h2>
 <p>As a reminder, these are our pipeline steps:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">stages</span>:
 </span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">build images</span>
@@ -158,7 +187,268 @@ Continuos Integration and Continuos Deployment have become a necessary requireme
 </span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">merge request</span>
 </span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">cleanup</span>
 </span></span><span style="display:flex;"><span>  - <span style="color:#ae81ff">deploy</span>
-</span></span></code></pre></div><p>We need that this step runs when we commit to a <strong>merge request</strong> and also when merginng into the <strong>main</strong> branch. We store the credentials retrieved by the anchor using the <code>dotenv</code> functionality.</p>
+</span></span></code></pre></div><p>Consider that we maintain two static deployments with this pipeline: <code>staging</code> and <code>production</code>. Then, on each <strong>merge request</strong>, a new <code>MR</code> environment is created.</p>
+<p><em>The details of how the pipeline is structured to manifest these environments are left as an exercise to the reader.</em></p>
+<h3 id="build-app-image">Build App Image</h3>
+<p><em>Dockerfile.python-poetry</em></p>
+<p>It is important to put the commands in a sequence that results in as few amount of layer updates as possible.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> python:3.12.8-alpine3.21</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Set environment variables</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> PIPX_HOME<span style="color:#f92672">=</span>/root/.local<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> PATH<span style="color:#f92672">=</span>$PIPX_HOME/bin:$PATH<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Install zip</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apk add --no-cache zip make<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Install pipx and Poetry</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> python3 -m pip install --user pipx <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    python3 -m pipx ensurepath <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    /root/.local/bin/pipx install poetry<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Verify installations</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> python3 -m pipx --version <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    poetry --version<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Set the working directory</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">WORKDIR</span><span style="color:#e6db74"> /app</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Copy only the dependency files first</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">COPY</span> pyproject.toml poetry.lock ./<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Install poetry dependencies</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> poetry install --no-root<span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p><em>Build App Image</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">build-app-image</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">stage</span>: <span style="color:#ae81ff">build images</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">rules</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">if</span>: <span style="color:#ae81ff">$CI_MERGE_REQUEST_IID &amp;&amp; $CI_MERGE_REQUEST_TARGET_BRANCH_NAME != &#39;main&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">variables</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">IMAGE_TAG</span>: <span style="color:#ae81ff">$FEATURE_BRANCH_TAG</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">if</span>: <span style="color:#ae81ff">$CI_COMMIT_BRANCH == &#39;main&#39; || $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">variables</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">IMAGE_TAG</span>: <span style="color:#ae81ff">$RELEASE_TAG</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">before_script</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#75715e">*get_aws_credentials</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#75715e">*log_into_ecr_with_env_credentials</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">script</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker build -t $APP_IMAGE_REPO_NAME:$IMAGE_TAG -f scripts/Dockerfile.python-poetry .</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker tag $APP_IMAGE_REPO_NAME:$IMAGE_TAG $APP_IMAGE_REPO_URL:$IMAGE_TAG</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker push $APP_IMAGE_REPO_URL:$IMAGE_TAG</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">echo &#34;Pushed $APP_IMAGE_REPO_URL:$IMAGE_TAG&#34;</span>
+</span></span></code></pre></div><p>Before the script, we get the AWS Credentials. Remember that this <code>anchor</code> sets the credentials as environment variables. Then, we <em>smoothly</em> log into <code>ECR</code>.</p>
+<p>Note that we introduce rules to determine the proper tag for our image. In short, if in an <code>MR</code> environment, tag the image as <code>MR-${CI_MERGE_REQUEST_IID}</code>, else <code>latest</code>.</p>
+<p>This task will build the image based on the <code>Dockerfile</code> and push it with a new image tag into our <code>ECR</code> respository. Subsequent jobs will be able to re-use this image.</p>
+<h3 id="build-terraform-image">Build Terraform Image</h3>
+<p><em>Dockerfile.terraform</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Dockerfile" data-lang="Dockerfile"><span style="display:flex;"><span><span style="color:#66d9ef">FROM</span><span style="color:#e6db74"> node:20.18.1-alpine3.20</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Set environment variables</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">ENV</span> TERRAFORM_VERSION<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1.9.8&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Install dependencies</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> apk add --no-cache aws-cli jq wget curl unzip libc6-compat<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e"># Install Terraform</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">RUN</span> echo <span style="color:#e6db74">&#34;Terraform is getting installed...&#34;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    wget <span style="color:#e6db74">&#34;https://releases.hashicorp.com/terraform/</span><span style="color:#e6db74">${</span>TERRAFORM_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">/terraform_</span><span style="color:#e6db74">${</span>TERRAFORM_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">_linux_amd64.zip&#34;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    unzip -o <span style="color:#e6db74">&#34;terraform_</span><span style="color:#e6db74">${</span>TERRAFORM_VERSION<span style="color:#e6db74">}</span><span style="color:#e6db74">_linux_amd64.zip&#34;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    mv terraform /usr/local/bin/terraform <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    terraform -v <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>    echo <span style="color:#e6db74">&#34;Terraform is installed!&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p><em>Build Terraform Image</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">build-terraform-image</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">stage</span>: <span style="color:#ae81ff">build images</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">rules</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">if</span>: <span style="color:#ae81ff">$CI_MERGE_REQUEST_IID &amp;&amp; $CI_MERGE_REQUEST_TARGET_BRANCH_NAME != &#39;main&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">variables</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">IMAGE_TAG</span>: <span style="color:#ae81ff">$FEATURE_BRANCH_TAG</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">if</span>: <span style="color:#ae81ff">$CI_COMMIT_BRANCH == &#39;main&#39; || $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">variables</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">IMAGE_TAG</span>: <span style="color:#ae81ff">$RELEASE_TAG</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">before_script</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#75715e">*get_aws_credentials</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#75715e">*log_into_ecr_with_env_credentials</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">script</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">echo &#34;Logging into ECR&#34;</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker build -t $TF_IMAGE_REPO_NAME:$IMAGE_TAG -f scripts/Dockerfile.terraform .</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker tag $TF_IMAGE_REPO_NAME:$IMAGE_TAG $TF_IMAGE_REPO_URL:$IMAGE_TAG</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker push $TF_IMAGE_REPO_URL:$IMAGE_TAG</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">echo &#34;Pushed $TF_IMAGE_REPO_URL:$IMAGE_TAG&#34;</span>
+</span></span></code></pre></div><p>Similar to <strong>Build App Image</strong> but uses the terraform Dockerfile instead.</p>
+<h3 id="unit-test">Unit Test</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">unit-test</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">stage</span>: <span style="color:#ae81ff">unit test</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">rules</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">if</span>: <span style="color:#ae81ff">$CI_MERGE_REQUEST_IID &amp;&amp; $CI_MERGE_REQUEST_TARGET_BRANCH_NAME != &#39;main&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">variables</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">IMAGE_TAG</span>: <span style="color:#ae81ff">$FEATURE_BRANCH_TAG</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">if</span>: <span style="color:#ae81ff">$CI_COMMIT_BRANCH == &#39;main&#39; || $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">variables</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">IMAGE_TAG</span>: <span style="color:#ae81ff">$RELEASE_TAG</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">variables</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ENVIRONMENT</span>: <span style="color:#e6db74">&#34;mr-${CI_MERGE_REQUEST_IID}&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">AWS_REGION</span>: <span style="color:#ae81ff">$AWS_DEFAULT_REGION</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">before_script</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#75715e">*get_aws_credentials</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#75715e">*log_into_ecr_with_env_credentials</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#75715e">*run_app_container</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">script</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker cp . app-container:/app</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker exec app-container ls -la /app</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker exec app-container make test</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">after_script</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker stop app-container</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker rm app-container</span>
+</span></span></code></pre></div><p>This is the first task where we re-use one of the images we already pushed into our <code>ECR</code> respository. We use the <code>app container</code> image to run our unit tests. Depending on the nature of our tests, we might not need to pass credentials to the container as we do in the anchor <code>.run_app_container</code>. Observe the syntax to execute a command inside the container using docker.</p>
+<p><em>If I need to use an environment variable in the container and I reference it in the command I am executing, is the value coming from my Job environment or the Container enviroment?</em>.</p>
+<p>Also, notice that there is no need for other plugins or utilities to be able to run a container inside a container.</p>
+<h3 id="build-package">Build Package</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">build-package</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">stage</span>: <span style="color:#ae81ff">build package</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">rules</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">if</span>: <span style="color:#ae81ff">$CI_MERGE_REQUEST_IID &amp;&amp; $CI_MERGE_REQUEST_TARGET_BRANCH_NAME != &#39;main&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">variables</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ENVIRONMENT</span>: <span style="color:#e6db74">&#34;mr-${CI_MERGE_REQUEST_IID}&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">IMAGE_TAG</span>: <span style="color:#ae81ff">$FEATURE_BRANCH_TAG</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">if</span>: <span style="color:#ae81ff">$CI_COMMIT_BRANCH == &#39;main&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">variables</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ENVIRONMENT</span>: <span style="color:#e6db74">&#34;prod&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">IMAGE_TAG</span>: <span style="color:#ae81ff">$RELEASE_TAG</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">if</span>: <span style="color:#ae81ff">$CI_COMMIT_BRANCH == &#39;staging&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">variables</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ENVIRONMENT</span>: <span style="color:#e6db74">&#34;staging&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">IMAGE_TAG</span>: <span style="color:#ae81ff">$RELEASE_TAG</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">variables</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">AWS_REGION</span>: <span style="color:#ae81ff">$AWS_DEFAULT_REGION</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">before_script</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#75715e">*get_aws_credentials</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#75715e">*log_into_ecr_with_env_credentials</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker pull $APP_IMAGE_REPO_URL:$IMAGE_TAG</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker run -e ENVIRONMENT=$ENVIRONMENT --privileged -d --name build-container $APP_IMAGE_REPO_URL:$IMAGE_TAG sleep infinity</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">script</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker cp . build-container:/app</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker exec build-container ls -la /app</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker exec build-container make build</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker cp build-container:/app/artifact.zip .</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">after_script</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker stop build-container</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker rm build-container</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">artifacts</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">when</span>: <span style="color:#ae81ff">always</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">paths</span>:
+</span></span><span style="display:flex;"><span>      - <span style="color:#ae81ff">artifact.zip</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">expire_in</span>: <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">week</span>
+</span></span></code></pre></div><p>Before the script, we get credentials and log into <code>ECR</code>. Then, we run the <code>app container</code> as <code>build-container</code>. We don&rsquo;t reuse the <code>.run_app_container</code> anchor because in this case we don&rsquo;t need to pass credentials to the container.</p>
+<p>Then, we build the project, extract the generated <code>artifact.zip</code> and store it in the pipeline.</p>
+<p>We have defined some rules to make sure that we are pulling the correct image tag. We can use these rules to set other <code>VARIABLES</code> if required.</p>
+<h3 id="merge-request">Merge Request</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">merge-request</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">stage</span>: <span style="color:#ae81ff">merge request</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">dependencies</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">build-package</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">rules</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">if</span>: <span style="color:#ae81ff">$CI_MERGE_REQUEST_IID &amp;&amp; $CI_MERGE_REQUEST_TARGET_BRANCH_NAME != &#39;main&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">variables</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ENVIRONMENT</span>: <span style="color:#e6db74">&#34;mr-${CI_MERGE_REQUEST_IID}&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">IMAGE_TAG</span>: <span style="color:#ae81ff">$FEATURE_BRANCH_TAG</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">AWS_REGION</span>: <span style="color:#ae81ff">$AWS_DEFAULT_REGION</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">mr-${CI_MERGE_REQUEST_IID}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">on_stop</span>: <span style="color:#ae81ff">destroy-merge-request</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">auto_stop_in</span>: <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">week</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">before_script</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#75715e">*get_aws_credentials</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#75715e">*log_into_ecr_with_env_credentials</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#75715e">*run_terraform_container</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">script</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker cp . tf-deploy-container:/app</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker exec  tf-deploy-container sh -c &#34;chmod +x /app/scripts/terraform_apply.sh &amp;&amp; /app/scripts/terraform_apply.sh&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">after_script</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker stop tf-deploy-container</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker rm tf-deploy-container</span>
+</span></span></code></pre></div><p>This task deploys the <code>MR</code> environment. It re-uses the <code>terraform container</code> to run the required script. It only runs under specific conditions, see the <code>rules</code> section. It does not run if the pipeline is running for the <code>staging</code> or <code>main</code> branches.</p>
+<h3 id="deploy">Deploy</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">deploy</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">stage</span>: <span style="color:#ae81ff">deploy</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">dependencies</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">build-package</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">rules</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">if</span>: <span style="color:#ae81ff">$CI_COMMIT_BRANCH == &#34;main&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">variables</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ENVIRONMENT</span>: <span style="color:#e6db74">&#34;prod&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">IMAGE_TAG</span>: <span style="color:#ae81ff">$RELEASE_TAG</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">AWS_REGION</span>: <span style="color:#ae81ff">$AWS_DEFAULT_REGION</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">if</span>: <span style="color:#ae81ff">$CI_COMMIT_BRANCH == &#34;staging&#34;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">variables</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">ENVIRONMENT</span>: <span style="color:#e6db74">&#34;staging&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">IMAGE_TAG</span>: <span style="color:#ae81ff">$RELEASE_TAG</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">AWS_REGION</span>: <span style="color:#ae81ff">$AWS_DEFAULT_REGION</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">production</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">before_script</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#75715e">*get_aws_credentials</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#75715e">*log_into_ecr_with_env_credentials</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#75715e">*run_terraform_container</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">script</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker cp . tf-deploy-container:/app</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker exec  tf-deploy-container sh -c &#34;chmod +x /app/scripts/terraform_apply.sh &amp;&amp; /app/scripts/terraform_apply.sh&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">after_script</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker stop tf-deploy-container</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker rm tf-deploy-container</span>
+</span></span></code></pre></div><p>This task deploys the staging or production environments. It re-uses the <code>terraform container</code>. <em>Do I need to set <code>environment.name</code> to <code>staging</code> when running the pipeline for the <code>staging</code> branch?</em> Yeah, maybe.</p>
+<h3 id="destroy-merge-request">Destroy Merge Request</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-yaml" data-lang="yaml"><span style="display:flex;"><span><span style="color:#f92672">destroy-merge-request</span>:
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">stage</span>: <span style="color:#ae81ff">cleanup</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">environment</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">name</span>: <span style="color:#ae81ff">mr-${CI_MERGE_REQUEST_IID}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">action</span>: <span style="color:#ae81ff">stop</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">variables</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">ENVIRONMENT</span>: <span style="color:#e6db74">&#34;mr-${CI_MERGE_REQUEST_IID}&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">AWS_REGION</span>: <span style="color:#ae81ff">$AWS_DEFAULT_REGION</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">IMAGE_TAG</span>: <span style="color:#e6db74">&#34;MR-${CI_MERGE_REQUEST_IID}&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">dependencies</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">merge-request</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">build-package</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">rules</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#f92672">if</span>: <span style="color:#ae81ff">$CI_MERGE_REQUEST_IID &amp;&amp; $CI_MERGE_REQUEST_TARGET_BRANCH_NAME != &#39;main&#39;</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">when</span>: <span style="color:#ae81ff">manual</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">before_script</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#75715e">*get_aws_credentials</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#75715e">*log_into_ecr_with_env_credentials</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#75715e">*run_terraform_container</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">script</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker cp . tf-deploy-container:/app</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker exec  tf-deploy-container sh -c &#34;chmod +x /app/scripts/terraform_destroy.sh &amp;&amp; /app/scripts/terraform_destroy.sh&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">after_script</span>:
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker stop tf-deploy-container</span>
+</span></span><span style="display:flex;"><span>    - <span style="color:#ae81ff">docker rm tf-deploy-container</span>
+</span></span></code></pre></div><p>This task destroys the <code>MR</code> environment. It re-uses the <code>terraform container</code>. It does not run for <code>staging</code> nor <code>main</code>.</p>
+<h2 id="container-usage">Container usage</h2>
+<p>In short:</p>
+<ul>
+<li>
+<p>Terraform Container: Used in the tasks</p>
+<ul>
+<li>Merge Request</li>
+<li>Destroy Merge Request</li>
+<li>Deploy</li>
+</ul>
+</li>
+<li>
+<p>App Container: Used in the tasks</p>
+<ul>
+<li>Unit Test</li>
+<li>Build Package</li>
+</ul>
+</li>
+</ul>
+<h2 id="conclusions">Conclusions</h2>
+<p>There are two evident contention points with this approach. First, and perhaps not as important, the need to pass credentials from the pipeline job environment to the containers that are spawned by the pipeline. It creates the need to retrieve and keep (temporary) these credentials as environment variables to pass them to the containers. The current approach relies on the <code>EC2</code> credentials that the GitLab Runners assume which is then used to assume the <code>Role</code> that we need. We can achieve some sense of security by restricting the GitLab Runner credentials so it only has permission to &ldquo;assume&rdquo; the required role and then the <code>Role</code> only has permission to deploy the infrastructure that we need and nothing more. Another way, I guess, could be to give the Gitlab Runner credentials all the permissions it needs to deploy the infrastructure we need. I am not totally sure here about which of these is better in the security sense but I&rsquo;d say that since less permissions is usually best, then I&rsquo;d say we can go with the first approach. I also guess that there is a better way to handle these credentials.</p>
+<p>Second, the exchage of time for space might not be worth it. I guess it depends on how much you are spending on your <code>ECR</code> bill and how much value you put into that compared to the time you save on your pipeline. From my experience, the cost does not sky rocket. However, it is very helpful to define effective and <em>safe</em> <code>Lifecycle Rules</code> on your <code>ECR</code> respositories. It is important to emphasize <em>Safety</em> here, you don&rsquo;t to define a rule that deletes and old image that is also tagged as your <code>latest</code>. A single image can have multiple <code>tags</code> in <code>ECR</code>.</p>
+<p>Then, it is also important to consider what optimizations <code>AWS</code> implements on the <code>ECR</code> respositories, I guess that <em>layers</em> are re-used as much as possible to save space so that the <code>size</code> value you see next to each image is the representation of the size of that particular image when downloading it for the first time and not the actual size it takes in <code>ECR</code> storage.</p>
+<p>One important observation is that this approach becomes more effective as the number of steps increases in your pipeline. If your pipeline is simple enough, then of course, don&rsquo;t bother too much with this kinf of optimization, it is not worth it. However, it might be a good exercise of pipeline expertise.</p>
+<p>There is so much to say about the different components and technology involved in this pipeline but I will leave that for the future me. I hope you have enjoyed this short text, I certainly enjoyed the trial and error process that took me to implement it the first time. I wish I had some graphs and numbers to exactly quantify how much time is saved by re-using images between pipeline steps but our intuition will have to suffice on this occasion.</p>
 <ul class="pa0">
   
 </ul>
@@ -181,7 +471,7 @@ Continuos Integration and Continuos Deployment have become a necessary requireme
     <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
   <div class="flex justify-between">
   <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/blog/" >
-    &copy;  Wilmer Uruchi Blog 2024 
+    &copy;  Wilmer Uruchi Blog 2025 
   </a>
     <div><div class="ananke-socials"></div>
 </div>
