@@ -6,14 +6,21 @@
     <description>Recent content in Posts on Wilmer Uruchi Blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Dec 2024 14:53:58 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 16 Jun 2025 10:28:30 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/blog/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>My First Post</title>
-      <link>http://localhost:1313/blog/posts/my-first-post/</link>
-      <pubDate>Sun, 01 Dec 2024 14:53:58 +0100</pubDate>
-      <guid>http://localhost:1313/blog/posts/my-first-post/</guid>
-      <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;&#xA;&lt;p&gt;Clean Start. Focusing on &lt;strong&gt;content&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Wilmer&lt;/p&gt;</description>
+      <title>The Mystery of the Random Jest Test Failures</title>
+      <link>http://localhost:1313/blog/posts/random-test-failures-mystery/</link>
+      <pubDate>Mon, 16 Jun 2025 10:28:30 +0200</pubDate>
+      <guid>http://localhost:1313/blog/posts/random-test-failures-mystery/</guid>
+      <description>&lt;p&gt;We have a &lt;code&gt;node@18&lt;/code&gt; project that implements an &lt;code&gt;express&lt;/code&gt; &lt;code&gt;API&lt;/code&gt; where we use &lt;code&gt;jest&lt;/code&gt;, &lt;code&gt;nock&lt;/code&gt; and &lt;code&gt;supertest&lt;/code&gt; to implement more than &lt;code&gt;200&lt;/code&gt; tests (keep that number in mind). Each test file groups the tests for one of the &lt;code&gt;API&lt;/code&gt;&amp;rsquo;s endpoints, if the endpoint covers many use-cases, we divide the tests into two or more files. Most of the tests are &lt;code&gt;end-to-end&lt;/code&gt;, we hit the endpoint running under &lt;code&gt;supertest&lt;/code&gt; and we mock the external requests that the endpoint&amp;rsquo;s workflow would make, then we assert the response and the &lt;code&gt;mocks&lt;/code&gt;&amp;rsquo; calls. The tests are executed when we push to our &lt;code&gt;git&lt;/code&gt; respository and they are also executed as part of the &lt;code&gt;GitLab&lt;/code&gt; pipeline. The tests are run in &lt;code&gt;isolated&lt;/code&gt; (&lt;code&gt;jest&lt;/code&gt;) mode. Your &lt;strong&gt;typical&lt;/strong&gt; setup.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>A GitLab pipeline that re-uses containers to achieve faster run times</title>
+      <link>http://localhost:1313/blog/posts/ci-cd-pipeline-w-containers/</link>
+      <pubDate>Mon, 20 May 2024 15:23:08 +0100</pubDate>
+      <guid>http://localhost:1313/blog/posts/ci-cd-pipeline-w-containers/</guid>
+      <description>&lt;h1 id=&#34;motivation&#34;&gt;Motivation&lt;/h1&gt;&#xA;&lt;p&gt;Continuos Integration and Continuos Deployment has become a necessary requirement in most (if not all) of our projects. We can get rid of many manual processes by building a pipeline in &lt;strong&gt;GitLab&lt;/strong&gt;, or similar tool, which runs through the usual steps: &lt;strong&gt;test&lt;/strong&gt;, &lt;strong&gt;build&lt;/strong&gt;, &lt;strong&gt;deploy&lt;/strong&gt;. However, these steps can involve redundant &lt;em&gt;automated&lt;/em&gt; actions, for example, the &lt;strong&gt;test&lt;/strong&gt; steps needs to install the necessary dependencies of the project to run, while the &lt;strong&gt;build&lt;/strong&gt; process might also need to install the same dependencies. In the case of &lt;code&gt;node_modules&lt;/code&gt;, these can be trivially shared between environments, but it might not be as simple for &lt;code&gt;python&lt;/code&gt; packages or other dependencies that are not as easily shared between pipeline steps or that require a large list of dependencies to be already present in the execution environment.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

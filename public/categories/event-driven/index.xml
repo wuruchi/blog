@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Event-Driven on Wilmer Uruchi Blog</title>
+    <link>http://localhost:1313/blog/categories/event-driven/</link>
+    <description>Recent content in Event-Driven on Wilmer Uruchi Blog</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 31 May 2025 19:02:59 +0200</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/categories/event-driven/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Start with the Message Schema</title>
+      <link>http://localhost:1313/blog/posts/async-arch-w-sqs/message-schema/</link>
+      <pubDate>Sat, 31 May 2025 19:02:59 +0200</pubDate>
+      <guid>http://localhost:1313/blog/posts/async-arch-w-sqs/message-schema/</guid>
+      <description>&lt;h1 id=&#34;motivation&#34;&gt;Motivation&lt;/h1&gt;&#xA;&lt;p&gt;We&amp;rsquo;ve finally reached this point. We can no longer keep adding more operations into our API endpoint workflow. It may be because we are reaching the &lt;code&gt;API Gateway&lt;/code&gt; limit or because we are feeling ashamed of having a request that takes more than &lt;code&gt;n&lt;/code&gt; seconds where &lt;code&gt;n&lt;/code&gt; is an integer that represents a time in seconds that has been steadily increasing in the last months. Either way, it is time to adopt the famous &lt;strong&gt;Event-Driven approach&lt;/strong&gt; and implement an asynchronous workflow using our technology of choice. For this post purposes, that would be &lt;code&gt;AWS SQS&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

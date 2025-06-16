@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>The Mystery of the Random Test Failures | Wilmer Uruchi Blog</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="description" content="What happens when your test suite starts to throw some random unexpected results only when running locally that seem to increase or decrease depending on random circumstances? Some days you get higher chances of error, other days you have to try many times to get one. It seems that if you want to look at them they don&rsquo;t show up, but when you need to actually test your code, there they are. Is it perhaps your lack of care for proper mocking and cleaning up after each test? It might be all those objects defined at the test file level that are then mutated inside tests. No, it might be the debugger you are attaching to the terminal. Is it the node version? Or the fact that you are using nvm. What if all the hints you get from your debugging effort tell you that the root cause is something and the more you try to fix that something the more it seems to break everything? Let me share with you a story about Software Development.">
+    <meta name="generator" content="Hugo 0.144.2">
+    
+    
+    
+      <meta name="robots" content="noindex, nofollow">
+    
+    
+
+    
+<link rel="stylesheet" href="/blog/ananke/css/main.min.css" >
+
+
+
+    
+
+    
+      
+
+    
+
+    
+
+    
+      <link rel="canonical" href="http://localhost:1313/blog/posts/random-test-failures-mystery/">
+    
+
+    <meta property="og:url" content="http://localhost:1313/blog/posts/random-test-failures-mystery/">
+  <meta property="og:site_name" content="Wilmer Uruchi Blog">
+  <meta property="og:title" content="The Mystery of the Random Test Failures">
+  <meta property="og:description" content="What happens when your test suite starts to throw some random unexpected results only when running locally that seem to increase or decrease depending on random circumstances? Some days you get higher chances of error, other days you have to try many times to get one. It seems that if you want to look at them they don’t show up, but when you need to actually test your code, there they are. Is it perhaps your lack of care for proper mocking and cleaning up after each test? It might be all those objects defined at the test file level that are then mutated inside tests. No, it might be the debugger you are attaching to the terminal. Is it the node version? Or the fact that you are using nvm. What if all the hints you get from your debugging effort tell you that the root cause is something and the more you try to fix that something the more it seems to break everything? Let me share with you a story about Software Development.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-06-16T10:28:30+02:00">
+    <meta property="article:modified_time" content="2025-06-16T10:28:30+02:00">
+
+  <meta itemprop="name" content="The Mystery of the Random Test Failures">
+  <meta itemprop="description" content="What happens when your test suite starts to throw some random unexpected results only when running locally that seem to increase or decrease depending on random circumstances? Some days you get higher chances of error, other days you have to try many times to get one. It seems that if you want to look at them they don’t show up, but when you need to actually test your code, there they are. Is it perhaps your lack of care for proper mocking and cleaning up after each test? It might be all those objects defined at the test file level that are then mutated inside tests. No, it might be the debugger you are attaching to the terminal. Is it the node version? Or the fact that you are using nvm. What if all the hints you get from your debugging effort tell you that the root cause is something and the more you try to fix that something the more it seems to break everything? Let me share with you a story about Software Development.">
+  <meta itemprop="datePublished" content="2025-06-16T10:28:30+02:00">
+  <meta itemprop="dateModified" content="2025-06-16T10:28:30+02:00">
+  <meta itemprop="wordCount" content="2118">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="The Mystery of the Random Test Failures">
+  <meta name="twitter:description" content="What happens when your test suite starts to throw some random unexpected results only when running locally that seem to increase or decrease depending on random circumstances? Some days you get higher chances of error, other days you have to try many times to get one. It seems that if you want to look at them they don’t show up, but when you need to actually test your code, there they are. Is it perhaps your lack of care for proper mocking and cleaning up after each test? It might be all those objects defined at the test file level that are then mutated inside tests. No, it might be the debugger you are attaching to the terminal. Is it the node version? Or the fact that you are using nvm. What if all the hints you get from your debugging effort tell you that the root cause is something and the more you try to fix that something the more it seems to break everything? Let me share with you a story about Software Development.">
+
+	
+  </head><body class="ma0 avenir bg-near-white development">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="/blog/" class="f3 fw2 hover-white no-underline white-90 dib">
+      
+        Wilmer Uruchi Blog
+      
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      <div class="ananke-socials"></div>
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+    <header class="mt4 w-100">
+      <aside class="instapaper_ignoref b helvetica tracked ttu">
+          
+        Posts
+      </aside><div id="sharing" class="mt3 ananke-socials"></div>
+<h1 class="f1 athelas mt3 mb1">The Mystery of the Random Test Failures</h1>
+      
+      
+      
+      <time class="f6 mv4 dib tracked" datetime="2025-06-16T10:28:30+02:00">June 16, 2025</time>
+      
+
+      
+      
+    </header>
+    <div class="nested-copy-line-height lh-copy serif f4 nested-links mid-gray pr4-l w-two-thirds-l"><p>What happens when your test suite starts to throw some random unexpected results only when running locally that seem to increase or decrease depending on random circumstances? Some days you get higher chances of error, other days you have to try many times to get one. It seems that if you want to look at them they don&rsquo;t show up, but when you need to actually test your code, there they are. Is it perhaps your lack of care for <strong>proper mocking</strong> and <strong>cleaning up</strong> after each test? It might be all those <strong>objects defined at the test file level</strong> that are then mutated inside tests. No, it might be the <strong>debugger</strong> you are attaching to the terminal. Is it the <em>node version</em>? Or the fact that you are using <code>nvm</code>. What if all the hints you get from your debugging effort tell you that the root cause is <em>something</em> and the more you try to fix that <em>something</em> the more it seems to break everything? Let me share with you a story about <strong>Software Development</strong>.</p>
+<p>We have a <code>node@18</code> project that implements an <code>express</code> <code>API</code> where we use <code>jest</code>, <code>nock</code> and <code>supertest</code> to implement more than <code>200</code> tests. Each test file groups the tests for one of the <code>API</code>&rsquo;s endpoints, if the endpoint covers many use-cases, we divide the tests into two or more files. Most of the tests are <code>end-to-end</code>, we hit the endpoint running under <code>supertest</code> and we mock the external requests that the endpoint&rsquo;s workflow consumes, then we assert the response and the <code>mocks</code>&rsquo; call count and/or arguments. The tests are executed automatically before we <strong>push</strong> to our <code>git</code> respository and they are also executed as part of the <code>GitLab</code> pipeline we have defined as part of the respository. The tests are run in <code>isolated</code> (<code>jest</code>) mode. Your <strong>typical</strong> setup.</p>
+<p>Some weeks ago we started to notice an <strong>increased number of random failures when running the complete test suite locally</strong>. Everything was fine when running them as part of the pipeline, i.e. inside a container. The failures were in the form of <code>500</code> responses from the <code>API</code> endpoints running under <code>supertest</code>, after inspecting the logs, the <code>500</code> responses <strong>appeared</strong> to be caused by <strong>missing mocks</strong> or <strong>mocks returning wrong data</strong> that was set up for another test case. It used to happen very rarely before, when we had less tests. After some observation, I noticed that the larger the test file, the higher the chances of getting a random error while running the tests on that file. Moreover, <strong>when one test failed, it also affected other tests</strong>. However, there were times where the tests ran fine most of the time, locally. <strong>Puzzling</strong>, it was.</p>
+<p>I have to admit that most the test files <strong>were not set up carefully</strong>. There was some shared state, <code>nock</code> mocks were not set up as cautiously as recommended by their documentation, some objects where defined at the <code>file</code> level and then shared between <code>describe</code> sections where some <code>test</code> cases could <strong>mutate</strong> them. There was some mock cleanup <code>afterEach</code> test but it could be improved, some operations were not mocked and they actually hit real services but it was not noticed because the response of those services was not consumed as part of the workflow. Nonetheless, <strong>they used to work Ok before</strong>, <strong>what had changed?</strong> What was the <strong>breaking change</strong> and when was it introduced? Was there a breaking change? If yes, then why it only affects <strong>local execution</strong>?</p>
+<p>Another curious observation was that if I run <strong>one test file at the time</strong>, the chances of getting an error decreased. That raised the suspicion that there might some kind of shared state that was causing race conditions or clashes between test files if they run concurrently. In consequence, I added the <code>--runInBand</code> <code>jest</code> flag in an attempt to <strong>decrease the probability</strong> of &ldquo;clashes&rdquo; between test files. It seemed to help, there were <strong>less random errors</strong>, but still there was no certainty about this shared state, <em>what was it?</em> After careful inspection of the code base, I couldn&rsquo;t find anything. I thought it was <em>Ok as long as the random failures happened rarely</em>. Some time later, even when using the <code>--runInBand</code> flag, test failures happened often.</p>
+<p><strong>On the internet</strong> it was heavily suggested that the reason of the random failures in <code>jest</code> tests was some mismanagement on how mocks or shared objects are set up in the tests definitions. It was also suggested that our code introduced some <strong>race conditions</strong> or, generally speaking, it had some <strong>loose ends</strong>, e.g. a non-awaited async call. The <code>AI LLM</code>s had similar suggestions, which is completely expected because that&rsquo;s usually what happens in these sort of situations. Anyhow, I&rsquo;d dare say that the <code>AI LLM</code> proved to be a little <strong>misleading</strong> because it insisted and closed itself into a set of possible causes; while searching on the internet and looking at other humans errors, suggestions, observations, etc. proved to at least hint into another root cause for the issue.</p>
+<p>I decided to implement all the <code>jest</code> and <code>nock</code> <strong>good practices</strong> that I could find and that seemed that could help on this kind of issue. The start of the body of the main <code>describe</code> block on each test file looks like:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span>    <span style="color:#a6e22e">beforeAll</span>(() <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">nock</span>.<span style="color:#a6e22e">isActive</span>()) <span style="color:#a6e22e">nock</span>.<span style="color:#a6e22e">activate</span>();
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">nock</span>.<span style="color:#a6e22e">disableNetConnect</span>();
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">nock</span>.<span style="color:#a6e22e">enableNetConnect</span>(<span style="color:#e6db74">&#34;127.0.0.1&#34;</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">beforeEach</span>(() <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">jest</span>.<span style="color:#a6e22e">clearAllMocks</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">jest</span>.<span style="color:#a6e22e">resetModules</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">nock</span>.<span style="color:#a6e22e">cleanAll</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">pdwAccessMock</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">nock</span>(<span style="color:#e6db74">&#34;https://access.pdw.company.io&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">amundsenMock</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">nock</span>(
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;https://amundsen.discovery.company.io&#34;</span>
+</span></span><span style="display:flex;"><span>        );
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">accessMock</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">nock</span>(<span style="color:#e6db74">&#34;https://api.company.io&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">oauthMock</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">nock</span>(<span style="color:#e6db74">&#34;https://oauth.company.io&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">contractMock</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">nock</span>(<span style="color:#e6db74">&#34;https://contracts.company.io/v1&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">streamMock</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">nock</span>(<span style="color:#e6db74">&#34;https://stream.company.io/v2&#34;</span>);
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">afterEach</span>(<span style="color:#66d9ef">async</span> () <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// Uncomment the following lines if you want to check for pending mocks
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">nock</span>.<span style="color:#a6e22e">isDone</span>()).<span style="color:#a6e22e">toBeTruthy</span>(); <span style="color:#75715e">// Ensure all mocks were used
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">err</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">currentTestName</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">expect</span>.<span style="color:#a6e22e">getState</span>().<span style="color:#a6e22e">currentTestName</span>; <span style="color:#75715e">// Get the current test name
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#75715e">// eslint-disable-next-line no-console
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">`Test failed in afterEach: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">currentTestName</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// eslint-disable-next-line no-console
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>            <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Pending mocks:&#39;</span>, <span style="color:#a6e22e">nock</span>.<span style="color:#a6e22e">pendingMocks</span>());
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#a6e22e">err</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">nock</span>.<span style="color:#a6e22e">abortPendingRequests</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">nock</span>.<span style="color:#a6e22e">cleanAll</span>(); <span style="color:#75715e">// Clean up all mocks after each test
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">jest</span>.<span style="color:#a6e22e">clearAllMocks</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">jest</span>.<span style="color:#a6e22e">resetModules</span>();
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">afterAll</span>(<span style="color:#66d9ef">async</span> () <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">await</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Promise</span>(<span style="color:#a6e22e">resolve</span> <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">setTimeout</span>(<span style="color:#a6e22e">resolve</span>, <span style="color:#ae81ff">1500</span>)); <span style="color:#75715e">// avoid jest open handle error
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">nock</span>.<span style="color:#a6e22e">restore</span>();
+</span></span><span style="display:flex;"><span>    });
+</span></span></code></pre></div><p>Where the <code>mock</code> objects are initialized at the beginning of the file, for example <code>let oauthMock = null</code>, don&rsquo;t mind the names. Notice <code>nock.enableNetConnect(&quot;127.0.0.1&quot;);</code> to enable connection to the <code>supertest</code> test instance. Also, notice the shared statements between <code>beforeEach</code> and <code>afterEach</code> and the block of code to <strong>catch unused mocks</strong>, I was a little bit <em>paranoid</em> about mocks at this point. Then, I took some time to <strong>fix any possible source of shared state</strong> between <code>describe</code> sections or <code>tests</code> on each test file. If a <code>test</code> needed some object, it would get <code>deepClone</code>d copy, even if it was only to return a <code>GET</code> response. I didn&rsquo;t want any possible <strong>source of doubt</strong> with respect to our mocks and shared state.</p>
+<p>After these changes, the number of random failures seemed to <strong>decrease but it was not reduced to zero</strong>. Worse, the root cause was still unclear. However, I was fairly confident at this point that <em>there was no mocks or shared state source of error</em>. It <strong>had to be something else</strong>.</p>
+<p><strong>At this point there were random test failures that happened more or less often depending on some random factor</strong>. The errors manifested as <code>500</code> response from our <code>API</code> under test. The error logs mentioned missing mocks errors or mocks returning the wrong data. I decided to take a closer look at those error responses by using this function:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">assertWithLogging</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">assertionCallback</span><span style="color:#f92672">:</span> () <span style="color:#f92672">=&gt;</span> <span style="color:#66d9ef">void</span>, <span style="color:#a6e22e">response</span>: <span style="color:#66d9ef">any</span>) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">assertionCallback</span>();
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// eslint-disable-next-line no-console
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Test failed. Response details:&#39;</span>, {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">statusCode</span>: <span style="color:#66d9ef">response.statusCode</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">body</span>: <span style="color:#66d9ef">response.body</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">headers</span>: <span style="color:#66d9ef">response.headers</span>,
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">response</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">throw</span> <span style="color:#a6e22e">error</span>; <span style="color:#75715e">// Re-throw the error to ensure the test fails
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    }
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>Usage example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-typescript" data-lang="typescript"><span style="display:flex;"><span><span style="color:#a6e22e">test</span>(<span style="color:#e6db74">&#34;Fails if support email is not valid&#34;</span>, <span style="color:#66d9ef">async</span> () <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">request</span>(<span style="color:#a6e22e">app</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">post</span>(<span style="color:#e6db74">&#34;/v0/dataproducts&#34;</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#66d9ef">set</span>(<span style="color:#e6db74">&#39;authorization&#39;</span>, <span style="color:#e6db74">`Bearer </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">someToken</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>)
+</span></span><span style="display:flex;"><span>        .<span style="color:#a6e22e">send</span>(Object.<span style="color:#a6e22e">assign</span>({}, <span style="color:#a6e22e">cloneDeep</span>(<span style="color:#a6e22e">minDataProductPayload</span>), { <span style="color:#a6e22e">support</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">email</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;foobar&#39;</span> } }));
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">assertWithLogging</span>(() <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">statusCode</span>).<span style="color:#a6e22e">toBe</span>(<span style="color:#ae81ff">400</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">expect</span>(<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">body</span>.<span style="color:#a6e22e">message</span>).<span style="color:#a6e22e">toBe</span>(<span style="color:#e6db74">&#39;request.body.support.email should match format &#34;email&#34;&#39;</span>);
+</span></span><span style="display:flex;"><span>    }, <span style="color:#a6e22e">response</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>If one of the assertion fails, we print the full response object. When one of these random <code>500</code> responses happened, <code>response.body</code> was empty: <code>{}</code>. By looking at the response contents I found the <code>text</code> property with value <strong>&lsquo;This is a proxy server. Does not respond to non-proxy requests.\n&rsquo;</strong>. Now that was <em>even more puzzling</em> but at least it hinted into a different direction: The test was not hitting the <code>API</code> <code>supertest</code> implementation, <strong>it was hitting something</strong> else which was in turn returning that <code>500</code> response. Moreover, one of the other properties of the <code>response</code> object revealed that the request was sent to the IP <code>127.0.0.1:59475</code>. Notice the <code>port</code> number.</p>
+<p>During my internet searching I ran into a response to the topic <a href="https://stackoverflow.com/questions/63343123/nodesupertest-flakes-with-client-network-socket-disconnected-before-secure-tls/63343124#63343124">Node+supertest flakes with &ldquo;Client network socket disconnected before secure TLS connection was established&rdquo;</a> which led to <a href="https://gavv.net/articles/ephemeral-port-reuse/">Ephemereal porst and SO_REUSEADDR</a>. That gave me some intuition into what could be happening. <em>That and my notions of networking</em>. Then, I decided to look at <strong>what was exactly running on that port</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo lsof -i :59475
+</span></span></code></pre></div><p>Returned:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>COMMAND     PID          USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME
+</span></span><span style="display:flex;"><span>snyk-maco <span style="color:#ae81ff">73241</span> wilmer.uruchi  180u  IPv4 0x1a64fb275cdfc9f7      0t0  TCP localhost:59475 <span style="color:#f92672">(</span>LISTEN<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p><strong>Hmmm</strong>&hellip; <code>snyk</code>, that&rsquo;s a familiar name. The complete name of that process is <strong>snyk-macos-arm64</strong>. If I killed the process, a replacement was spawned. There were <code>6</code> processes with the same name in my computer and that number <strong>corresponded exactly</strong> with&hellip; the number of <code>VSCode</code> instances running at that time in my computer (I do some multi-tasking). That was Ok, I installed the <code>snyk</code> extension for <code>VSCode</code> because that&rsquo;s what we use and it is useful in the security sense. I proceeded to uninstall the <code>extension</code>, temporarily, from <code>VSCode</code> and restart it. Then, I ran the <code>tests</code>. <strong>No errors, flawless</strong>. I even removed <code>--runInBand</code> from the command and suprised me not: <strong>no errors</strong>.</p>
+<p>From what I understand, the sockets created by <code>supertest</code> use the <code>SO_REUSEADDR</code> flag and the <code>Snyk</code> extension is doing the same which means that there is a chance that both could end up <strong>consuming the same port</strong>. That&rsquo;s the reason I got the random <code>500</code> responses from <code>supertest</code>, it was actually <strong>the snyk process who was responding</strong>. That also explains why the probability of these errors appeared to increase or decrease at random times, it depended on the number of <code>VSCode</code> instances I had running at that time. It also explains why there was a higher chance of getting random errors when running files that contained large numbers of test cases. Generally speaking, <strong>the probability of getting one of these random errors was proportional to the number of</strong> <code>VSCode</code> <strong>instances running at the time and, obviously, the number of tests executed.</strong></p>
+<p>However, <strong>why one of these random errors would also cause errors for other test cases in the form of missing mocks or wrong mock data?</strong> Here I don&rsquo;t have a clear answer. I know for certain that since the request didn&rsquo;t reach the test endpoint, all the mocks set for that test where not consumed, but they should&rsquo;ve been removed by the <code>beforeEach</code> or <code>afterEach</code> sections. Perhaps that <code>instance</code> of <code>supertest</code> <strong>that was not consumed needed to be also explicitly cleaned</strong> <code>afterEach</code> test and because it was not cleaned, the next test was instead consuming the incorrect instance. I guess that sounds like the most plausible explanation. I must stress that <strong>the error propagation caused by these random errors was the most misleading part of debugging this whole situation</strong>, it was actively taking me into the wrong direction.</p>
+<p>One more note about the <code>LLM</code> models. Although they proved to be somewhat misleading on this sceneario, they provided tools that helped me debug and discard possible root causes. Also, this is an unusual case, and probably it is the type of data that is treated as an outlier and not included in the training data. As a regular user, if I mention <code>node</code>, <code>express</code>, <code>jest</code>, <code>supertest</code>, <code>nock</code> and &ldquo;random test errors&rdquo;, the first and most likely response is that there is a problem with my test setup.</p>
+<p>Now that the root cause is clear, I can start <strong>thinking about a solution</strong>. Considering that the <code>Snyk</code> extension for <code>VSCode</code> has to stay, I will have to re-think how the <code>supertest</code> library is set up. From a quick look on the internet, there doesn&rsquo;t appear to be a straightforward way to force <code>supertest</code> to consume a pre-defined port (or range of ports) for testing. On the other hand, I am sure there are other libraries that serve the same purpose as <code>supertest</code> and that might provide the functionality that we need or at least that do not cause the port collisions. I will leave that solution for another article.</p>
+<p>It has been a frustrating but instructing experience. I have added another dimension to the way I debug.</p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6 instapaper_ignoref">
+      
+      
+      </div>
+    </div>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://localhost:1313/blog/" >
+    &copy;  Wilmer Uruchi Blog 2025 
+  </a>
+    <div><div class="ananke-socials"></div>
+</div>
+  </div>
+</footer>
+
+  </body>
+</html>

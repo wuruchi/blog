@@ -6,14 +6,14 @@
     <description>Recent content on Wilmer Uruchi Blog</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 01 Dec 2024 14:53:58 +0100</lastBuildDate>
+    <lastBuildDate>Mon, 16 Jun 2025 10:28:30 +0200</lastBuildDate>
     <atom:link href="http://localhost:1313/blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>My First Post</title>
-      <link>http://localhost:1313/blog/posts/my-first-post/</link>
-      <pubDate>Sun, 01 Dec 2024 14:53:58 +0100</pubDate>
-      <guid>http://localhost:1313/blog/posts/my-first-post/</guid>
-      <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;&#xA;&lt;p&gt;Clean Start. Focusing on &lt;strong&gt;content&lt;/strong&gt;.&lt;/p&gt;&#xA;&lt;p&gt;Wilmer&lt;/p&gt;</description>
+      <title>The Mystery of the Random Test Failures</title>
+      <link>http://localhost:1313/blog/posts/random-test-failures-mystery/</link>
+      <pubDate>Mon, 16 Jun 2025 10:28:30 +0200</pubDate>
+      <guid>http://localhost:1313/blog/posts/random-test-failures-mystery/</guid>
+      <description>&lt;p&gt;What happens when your test suite starts to throw some random unexpected results only when running locally that seem to increase or decrease depending on random circumstances? Some days you get higher chances of error, other days you have to try many times to get one. It seems that if you want to look at them they don&amp;rsquo;t show up, but when you need to actually test your code, there they are. Is it perhaps your lack of care for &lt;strong&gt;proper mocking&lt;/strong&gt; and &lt;strong&gt;cleaning up&lt;/strong&gt; after each test? It might be all those &lt;strong&gt;objects defined at the test file level&lt;/strong&gt; that are then mutated inside tests. No, it might be the &lt;strong&gt;debugger&lt;/strong&gt; you are attaching to the terminal. Is it the &lt;em&gt;node version&lt;/em&gt;? Or the fact that you are using &lt;code&gt;nvm&lt;/code&gt;. What if all the hints you get from your debugging effort tell you that the root cause is &lt;em&gt;something&lt;/em&gt; and the more you try to fix that &lt;em&gt;something&lt;/em&gt; the more it seems to break everything? Let me share with you a story about &lt;strong&gt;Software Development&lt;/strong&gt;.&lt;/p&gt;</description>
     </item>
     <item>
       <title>A GitLab pipeline that re-uses containers to achieve faster run times</title>

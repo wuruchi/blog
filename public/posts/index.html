@@ -45,8 +45,8 @@
   <meta property="og:type" content="website">
 
   <meta itemprop="name" content="Posts">
-  <meta itemprop="datePublished" content="2024-12-01T15:23:08+01:00">
-  <meta itemprop="dateModified" content="2024-12-01T15:23:08+01:00">
+  <meta itemprop="datePublished" content="2025-06-16T10:28:30+02:00">
+  <meta itemprop="dateModified" content="2025-06-16T10:28:30+02:00">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Posts">
 
@@ -95,16 +95,33 @@
   <div class="bg-white mb3 pa4 gray overflow-hidden">
     <span class="f6 db">Posts</span>
     <h1 class="f3 near-black">
-      <a href="/blog/posts/my-first-post/" class="link black dim">
-        My First Post
+      <a href="/blog/posts/random-test-failures-mystery/" class="link black dim">
+        The Mystery of the Random Jest Test Failures
       </a>
     </h1>
     <div class="nested-links f5 lh-copy nested-copy-line-height">
-      <h3 id="introduction">Introduction</h3>
-<p>Clean Start. Focusing on <strong>content</strong>.</p>
-<p>Wilmer</p>
+      <p>We have a <code>node@18</code> project that implements an <code>express</code> <code>API</code> where we use <code>jest</code>, <code>nock</code> and <code>supertest</code> to implement more than <code>200</code> tests (keep that number in mind). Each test file groups the tests for one of the <code>API</code>&rsquo;s endpoints, if the endpoint covers many use-cases, we divide the tests into two or more files. Most of the tests are <code>end-to-end</code>, we hit the endpoint running under <code>supertest</code> and we mock the external requests that the endpoint&rsquo;s workflow would make, then we assert the response and the <code>mocks</code>&rsquo; calls. The tests are executed when we push to our <code>git</code> respository and they are also executed as part of the <code>GitLab</code> pipeline. The tests are run in <code>isolated</code> (<code>jest</code>) mode. Your <strong>typical</strong> setup.</p>
     </div>
-    <a href="/blog/posts/my-first-post/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+    <a href="/blog/posts/random-test-failures-mystery/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+  </div>
+</div>
+
+        </div>
+      
+        <div class="relative w-100 w-30-l mb4 bg-white">
+          <div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/blog/posts/ci-cd-pipeline-w-containers/" class="link black dim">
+        A GitLab pipeline that re-uses containers to achieve faster run times
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      <h1 id="motivation">Motivation</h1>
+<p>Continuos Integration and Continuos Deployment has become a necessary requirement in most (if not all) of our projects. We can get rid of many manual processes by building a pipeline in <strong>GitLab</strong>, or similar tool, which runs through the usual steps: <strong>test</strong>, <strong>build</strong>, <strong>deploy</strong>. However, these steps can involve redundant <em>automated</em> actions, for example, the <strong>test</strong> steps needs to install the necessary dependencies of the project to run, while the <strong>build</strong> process might also need to install the same dependencies. In the case of <code>node_modules</code>, these can be trivially shared between environments, but it might not be as simple for <code>python</code> packages or other dependencies that are not as easily shared between pipeline steps or that require a large list of dependencies to be already present in the execution environment.</p>
+    </div>
+    <a href="/blog/posts/ci-cd-pipeline-w-containers/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
   </div>
 </div>
 
